@@ -24,27 +24,25 @@ int		get_next_line(int const fd, char **line)
 	while (ret_read = (read(fd, buf, BUFF_SIZE)))
 	{
 	     if (buf[ret_read] == '\n' || buf[ret_read] == '\0')
-		{
-		     if (line)
-			  free(line);
-		     if (!((&line)=(char *)malloc(sizeof(char) * ret_read)))
-			  return (NULL);
-		     while (c < ret_read)
+	     {
+		  if (line)
+		       free(line);
+		  if (!((&line)=(char *)malloc(sizeof(char) * ret_read)))
+		       return (NULL);
+		  while (c < ret_read)
 		     {
 			  *(*line) = buf[c];
 			  (*line)++;
 			  c++;
 		     }
-		     if (c == ret_read)
-		     {
-			  *(*line) = '\0';
-			  return (1)
-		     }
-		     if (buf[ret_read] == '\0')
-			  return (0);
-		}
+		  if (c == ret_read)
+		  {
+		       *(*line) = '\0';
+		       return (1);
+		  }
+		  if (buf[ret_read] == '\0')
+		       return (0);
+	     }
 	}
 	return (-1);	
-}	
-	return (-1);
 }
