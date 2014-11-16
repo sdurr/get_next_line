@@ -12,44 +12,39 @@
 
 #include "get_next_line.h"
 
-int			ft_copy_line(char *buffer, char **line, int i)
-{
-	int c;
-
-	c = 0;
-	while (c < i)
-	{
-		*(*line) = buffer[c];
-		c++;
-		(*line)++;
-	}
-	*(*line) = '\0';
-	if (c == i)
-		return (1);
-	return (-1);
-}
-
 int		get_next_line(int const fd, char **line)
 {
 	char buf[BUFF_SIZE];
 	int ret_read;
-	int i;
-	int ret;
+	int c;
 
-	i = 0;
+	c = 0;
 	if (BUFF_SIZE == 0)
 		return (-1);
 	while (ret_read = (read(fd, buf, BUFF_SIZE)))
 	{
-		if (buf[i] == '\n' || buf[i] == EOF)
+	     if (buf[ret_read] == '\n' || buf[ret_read] == '\0')
 		{
-			ret = ft_copy_line(buf, line, i);
-			if (ret == 1)
-				return (1);
-			else
-				return (0);
+		     if (line)
+			  free(line);
+		     if (!((&line)=(char *)malloc(sizeof(char) * ret_read)))
+			  return (NULL);
+		     while (c < ret_read)
+		     {
+			  *(*line) = buf[c];
+			  (*line)++;
+			  c++;
+		     }
+		     if (c == ret_read)
+		     {
+			  *(*line) = '\0';
+			  return (1)
+		     }
+		     if (buf[ret_read] == '\0')
+			  return (0);
 		}
-		i++;
 	}
+	return (-1);	
+}	
 	return (-1);
 }
