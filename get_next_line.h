@@ -15,9 +15,12 @@
 
 # include <unistd.h>
 # include <stdio.h>
-#include <string.h>
-
-# define BUFF_SIZE 1
+# include <string.h>
+# include <stdlib.h>
+# include <fcntl.h>
+# include <sys/types.h>
+# include <sys/stat.h>
+# define BUF_SIZE 1
 
 int		get_next_line(int const fd, char **line);
 

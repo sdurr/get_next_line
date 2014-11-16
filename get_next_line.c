@@ -14,21 +14,21 @@
 
 int		get_next_line(int const fd, char **line)
 {
-	char buf[BUFF_SIZE];
+	char buf[BUF_SIZE];
 	int ret_read;
 	int c;
 
 	c = 0;
-	if (BUFF_SIZE == 0)
+	if (BUF_SIZE == 0)
 		return (-1);
-	while (ret_read = (read(fd, buf, BUFF_SIZE)))
+	while (ret_read = (read(fd, buf, BUF_SIZE)))
 	{
 	     if (buf[ret_read] == '\n' || buf[ret_read] == '\0')
 	     {
 		  if (line)
 		       free(line);
-		  if (!((&line)=(char *)malloc(sizeof(char) * ret_read)))
-		       return (NULL);
+		  if (!((*line)=(char *)malloc(sizeof(char) * ret_read)))
+		       return (-1);
 		  while (c < ret_read)
 		     {
 			  *(*line) = buf[c];
