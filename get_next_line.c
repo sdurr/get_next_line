@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/16 09:22:58 by sdurr             #+#    #+#             */
-/*   Updated: 2014/11/22 14:28:49 by sdurr            ###   ########.fr       */
+/*   Updated: 2014/11/22 22:35:35 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 
 int		ft_line(char *s, int i)
 {
-	int len;
-	int j;
+	int		len;
+	int		j;
 
 	j = i;
 	len = 1;
@@ -37,9 +37,9 @@ int		get_next_line(int const fd, char **line)
 
 	if (!stock)
 		stock = ft_strnew(1);
-	while ((i = read(fd, buf, (BUFF_SIZE - BUFF_SIZE + 1))) != EOF && i == 1)
+	while ((i = read(fd, buf, BUFF_SIZE)) != EOF && i > 0)
 	{
-		buf[BUFF_SIZE] = '\0';
+		buf[i] = '\0';
 		stock = ft_strjoin(stock, buf);
 	}
 	i = 0;
