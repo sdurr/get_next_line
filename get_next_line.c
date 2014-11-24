@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/16 09:22:58 by sdurr             #+#    #+#             */
-/*   Updated: 2014/11/24 11:45:55 by sdurr            ###   ########.fr       */
+/*   Updated: 2014/11/24 14:06:13 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,17 @@ int		ft_line(char *s, int i)
 	return (len);
 }
 
+void	ft_read(char **stock, char *buf, int const fd)
+{
+	int i;
+
+	while ((i = read(fd, buf, BUFF_SIZE)) != EOF && i > 0)
+	{
+		buf[i] = '\0';
+		*stock = ft_strjoin(*stock, buf);
+	}
+}
+
 int		get_next_line(int const fd, char **line)
 {
 	char			buf[BUFF_SIZE + 1];
@@ -35,15 +46,11 @@ int		get_next_line(int const fd, char **line)
 	static char		*stock;
 	static	int		j = 0;
 
-	if(line == NULL)
+	if (line == NULL)
 		return (-1);
 	if (!stock)
 		stock = ft_strnew(1);
-	while ((i = read(fd, buf, BUFF_SIZE)) != EOF && i > 0)
-	{
-		buf[i] = '\0';
-		stock = ft_strjoin(stock, buf);
-	}
+	ft_read(&stock, buf, fd);
 	i = 0;
 	if (stock[j] == '\n')
 		j++;

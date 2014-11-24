@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/16 09:23:11 by sdurr             #+#    #+#             */
-/*   Updated: 2014/11/16 10:16:03 by sdurr            ###   ########.fr       */
+/*   Updated: 2014/11/23 00:38:31 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@
 # include <fcntl.h>
 # include <sys/types.h>
 # include <sys/stat.h>
-# define BUF_SIZE 1
+
+# define BUFF_SIZE 1000000
 
 int		get_next_line(int const fd, char **line);
-
 #endif
