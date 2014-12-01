@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/16 09:22:58 by sdurr             #+#    #+#             */
-/*   Updated: 2014/11/29 18:41:38 by sdurr            ###   ########.fr       */
+/*   Updated: 2014/12/01 09:09:28 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 
 char	*ft_read(char *stock, int const fd, int *i)
 {
-	char			buf[BUFF_SIZE];
+	char			buf[BUFF_SIZE + 1];
 
 	if ((*i = read(fd, buf, BUFF_SIZE)) != EOF && *i > 0)
 	{
