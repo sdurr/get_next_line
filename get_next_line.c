@@ -6,7 +6,7 @@
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/16 09:22:58 by sdurr             #+#    #+#             */
-/*   Updated: 2014/12/01 09:09:28 by sdurr            ###   ########.fr       */
+/*   Updated: 2014/12/02 12:13:04 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 #include <string.h>
 #include <stdio.h>
 
-char	*ft_read(char *stock, int const fd, int *i)
+static char		*ft_read(char *stock, int const fd, int *i)
 {
 	char			buf[BUFF_SIZE + 1];
 
@@ -29,7 +29,7 @@ char	*ft_read(char *stock, int const fd, int *i)
 	return (stock);
 }
 
-int		get_next_line(int const fd, char **line)
+int				get_next_line(int const fd, char **line)
 {
 	int				i;
 	static char		*stock = NULL;
@@ -38,7 +38,8 @@ int		get_next_line(int const fd, char **line)
 	if (line == NULL || fd < 0)
 		return (-1);
 	if (!stock)
-		stock = ft_strnew(1);
+		if (!(stock = ft_strnew(1)))
+			return (-1);
 	i = 1;
 	while (i > 0)
 	{
@@ -46,11 +47,13 @@ int		get_next_line(int const fd, char **line)
 		if ((stock2 = ft_strchr(stock, '\n')) != NULL)
 		{
 			*stock2 = '\0';
-			*line = ft_strdup(stock);
+			if (!(*line = ft_strdup(stock)))
+				return (-1);
 			ft_memmove(stock, stock2 + 1, ft_strlen(stock2 + 1) + 1);
 			return (1);
 		}
 	}
-	*line = ft_strdup(stock);
-	return (0);
+	if (!(*line = ft_strdup(stock)))
+		return (-1);
+	return (i);
 }

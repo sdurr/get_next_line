@@ -1,19 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/16 09:23:11 by sdurr             #+#    #+#             */
-/*   Updated: 2014/12/02 12:14:47 by sdurr            ###   ########.fr       */
+/*   Created: 2014/11/07 11:20:37 by sdurr             #+#    #+#             */
+/*   Updated: 2014/11/28 11:34:54 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include <string.h>
 
-# define BUFF_SIZE 8
+void	ft_bzero(void *s, size_t n)
+{
+	size_t	i;
+	char	*rt;
 
-int		get_next_line(int const fd, char **line);
-#endif
+	i = 0;
+	rt = (char *)s;
+	if (rt)
+	{
+		while (n > 0)
+		{
+			rt[i] = '\0';
+			i++;
+			n--;
+		}
+	}
+}

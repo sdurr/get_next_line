@@ -1,19 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_copy_tmp.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/16 09:23:11 by sdurr             #+#    #+#             */
-/*   Updated: 2014/12/02 12:14:47 by sdurr            ###   ########.fr       */
+/*   Created: 2014/11/12 15:34:54 by sdurr             #+#    #+#             */
+/*   Updated: 2014/11/20 14:54:23 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+int		ft_copy_tmp(char *s, int i, char c, char *tmp)
+{
+	int len;
 
-# define BUFF_SIZE 8
-
-int		get_next_line(int const fd, char **line);
-#endif
+	len = 0;
+	while (s[i] != c && s[i] != '\0')
+	{
+		tmp[len] = s[i];
+		i++;
+		len++;
+	}
+	tmp[len] = '\0';
+	return (i);
+}

@@ -1,19 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_count_char.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/16 09:23:11 by sdurr             #+#    #+#             */
-/*   Updated: 2014/12/02 12:14:47 by sdurr            ###   ########.fr       */
+/*   Created: 2014/11/12 13:48:00 by sdurr             #+#    #+#             */
+/*   Updated: 2014/12/01 12:24:14 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+int		ft_count_char(char *s, char c)
+{
+	int		count;
 
-# define BUFF_SIZE 8
-
-int		get_next_line(int const fd, char **line);
-#endif
+	count = 0;
+	if (s)
+	{
+		while (*s != '\0')
+		{
+			while (*s == c && *s != '\0')
+				s++;
+			while (*s != c && *s != '\0')
+				s++;
+			count++;
+		}
+		return (count);
+	}
+	return (count);
+}

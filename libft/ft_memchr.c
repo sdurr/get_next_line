@@ -1,19 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/16 09:23:11 by sdurr             #+#    #+#             */
-/*   Updated: 2014/12/02 12:14:47 by sdurr            ###   ########.fr       */
+/*   Created: 2014/11/07 14:22:11 by sdurr             #+#    #+#             */
+/*   Updated: 2014/11/28 11:39:13 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include <string.h>
 
-# define BUFF_SIZE 8
+void	*ft_memchr(const void *s, int c, size_t n)
+{
+	unsigned char	*ret;
+	int				i;
 
-int		get_next_line(int const fd, char **line);
-#endif
+	i = 0;
+	if (!(ret = (unsigned char *)s))
+		return (NULL);
+	if (s)
+	{
+		while (n != 0)
+		{
+			if (ret[i] == (unsigned char)c)
+				return ((char *)&ret[i]);
+			n--;
+			i++;
+		}
+	}
+	return (NULL);
+}

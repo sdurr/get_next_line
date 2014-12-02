@@ -1,19 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/16 09:23:11 by sdurr             #+#    #+#             */
-/*   Updated: 2014/12/02 12:14:47 by sdurr            ###   ########.fr       */
+/*   Created: 2014/11/07 12:23:27 by sdurr             #+#    #+#             */
+/*   Updated: 2014/11/28 11:39:43 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include <string.h>
 
-# define BUFF_SIZE 8
+void	*ft_memcpy(void *dst, const void *src, size_t n)
+{
+	char		*ret;
+	const char	*srcs;
+	int			i;
 
-int		get_next_line(int const fd, char **line);
-#endif
+	i = 0;
+	if (dst || src)
+	{
+		ret = dst;
+		srcs = src;
+		while (n != 0)
+		{
+			ret[i] = srcs[i];
+			i++;
+			n--;
+		}
+	}
+	return (ret);
+}

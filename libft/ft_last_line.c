@@ -1,19 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_last_line.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/16 09:23:11 by sdurr             #+#    #+#             */
-/*   Updated: 2014/12/02 12:14:47 by sdurr            ###   ########.fr       */
+/*   Created: 2014/11/20 15:05:52 by sdurr             #+#    #+#             */
+/*   Updated: 2014/12/01 11:22:35 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "libft.h"
+#include <string.h>
 
-# define BUFF_SIZE 8
+char	**ft_last_line(char const *s, char **ret, char c)
+{
+	int		j;
+	char	*tmp;
 
-int		get_next_line(int const fd, char **line);
-#endif
+	j = 0;
+	tmp = ft_strrchr(s, c);
+	tmp++;
+	while (ret[j])
+		j++;
+	ret[j - 1] = ft_strdup(tmp);
+	return (ret);
+}

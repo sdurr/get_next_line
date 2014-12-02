@@ -1,19 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_isalnum.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/16 09:23:11 by sdurr             #+#    #+#             */
-/*   Updated: 2014/12/02 12:14:47 by sdurr            ###   ########.fr       */
+/*   Created: 2014/11/04 18:16:00 by sdurr             #+#    #+#             */
+/*   Updated: 2014/11/18 18:30:56 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
-
-# define BUFF_SIZE 8
-
-int		get_next_line(int const fd, char **line);
-#endif
+int		ft_isalnum(int c)
+{
+	if (((c >= '0') && (c <= '9')) || ((c >= 'A') && (c <= 'Z'))
+		|| ((c >= 'a') && (c <= 'z')))
+	{
+		return (1);
+	}
+	else
+		return (0);
+}

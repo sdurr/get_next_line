@@ -1,19 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_long_int.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/16 09:23:11 by sdurr             #+#    #+#             */
-/*   Updated: 2014/12/02 12:14:47 by sdurr            ###   ########.fr       */
+/*   Created: 2014/11/13 09:29:15 by sdurr             #+#    #+#             */
+/*   Updated: 2014/11/28 11:37:53 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+int		ft_long_int(int n)
+{
+	int ret;
 
-# define BUFF_SIZE 8
-
-int		get_next_line(int const fd, char **line);
-#endif
+	ret = 1;
+	if (n < 0)
+	{
+		ret++;
+		n = n * -1;
+	}
+	while (n > 0)
+	{
+		n = n / 10;
+		ret++;
+	}
+	return (ret);
+}

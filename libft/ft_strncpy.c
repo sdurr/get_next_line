@@ -1,19 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_strcnpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/16 09:23:11 by sdurr             #+#    #+#             */
-/*   Updated: 2014/12/02 12:14:47 by sdurr            ###   ########.fr       */
+/*   Created: 2014/11/03 15:23:22 by sdurr             #+#    #+#             */
+/*   Updated: 2014/12/01 11:45:02 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include <string.h>
+#include <stdlib.h>
 
-# define BUFF_SIZE 8
+char	*ft_strncpy(char *dst, const char *src, size_t n)
+{
+	int i;
 
-int		get_next_line(int const fd, char **line);
-#endif
+	i = 0;
+	if (src || dst)
+	{
+		while (n && src[i] != '\0')
+		{
+			dst[i] = src[i];
+			i++;
+			n--;
+		}
+		while (n--)
+			dst[i++] = '\0';
+		return (dst);
+	}
+	return (NULL);
+}

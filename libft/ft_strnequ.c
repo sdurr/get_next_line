@@ -1,19 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_strnequ.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sdurr <sdurr@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/16 09:23:11 by sdurr             #+#    #+#             */
-/*   Updated: 2014/12/02 12:14:47 by sdurr            ###   ########.fr       */
+/*   Created: 2014/11/11 08:59:50 by sdurr             #+#    #+#             */
+/*   Updated: 2014/11/28 11:52:02 by sdurr            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include <string.h>
 
-# define BUFF_SIZE 8
+int		ft_strnequ(char const *s1, char const *s2, size_t n)
+{
+	int		len_s1;
+	int		len_s2;
+	int		i;
 
-int		get_next_line(int const fd, char **line);
-#endif
+	i = 0;
+	len_s1 = 0;
+	len_s2 = 0;
+	if (s1 && s2)
+	{
+		while (s1[i] && s2[i] && n--)
+		{
+			len_s1 = len_s1 + s1[i];
+			len_s2 = len_s2 + s2[i];
+			i++;
+			if (len_s1 != len_s2)
+				return (0);
+		}
+	}
+	return (1);
+}
